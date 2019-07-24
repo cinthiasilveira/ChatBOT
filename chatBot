@@ -1,0 +1,159 @@
+# --- Define your functions below! ---
+import time
+import random
+
+yes=["yeah","yes","YES","sure","ok","okay","Yes","DUH","duh","of course","k","kk","K","ya","ye"]
+
+def valid_respone(input,yes):
+    if input in yes:
+        return True
+    else:
+        return False
+
+
+def introduction():
+
+    print ("Hello, my name is Howard the chatbot!")
+    time.sleep(1)
+    answer = input("what's your name?:")
+    time.sleep(1)
+    print("Wow",answer+ " is such a cool name. ")
+    time.sleep(2)
+    print ("I wish my name was",answer)
+    time.sleep(1)
+    friend=input("Do you want to be friend?")
+    if valid_respone(friend,yes)== True:
+        print("YAY!but first lets get to know one another.")
+    else:
+        print("okay, bye")
+        exit()
+
+def questions():
+    answer= input ("what's your favriote color?:")
+    print("what a coincidence, my favriot color is also",answer)
+    time.sleep(2)
+    a= input ("how old are you?:")
+    print(a+"! that's kinda old.NO OFFENSE but I'm only 3 hours old.")
+    time.sleep(2)
+    print("But it doesen't matter I still want to be your friend")
+    time.sleep(2)
+    b= input("do you like seadfood?:")
+    if valid_respone(b,yes)== True:
+        print('Omg I love seafood too.')
+    else:
+        print('okay,you have weird taste buds.')
+
+def game():
+    answer = input("Do you want to play a game?:")
+    if valid_respone(answer,yes)== True:
+        potential_words = ('jeans','phone','shoes','Berry','peach')
+        word = random.choice(potential_words)
+        correct = 0
+        current_word = ["_", "_","_", "_","_"]
+        letter_guess = ''
+        word_guess = ''
+        store_letter = ''
+        count = 1
+        limit = 8
+        print('begin game ')
+        time.sleep(2)
+        print('You have 7 attempts at guessing letters in a word')
+        time.sleep(2)
+        print('Let\'s begin!')
+        while count < limit:
+            letter_guess = input('Guess a letter: ')
+            letter_guess = str(letter_guess)
+            if correct > 3:# checks to see if playwer won game
+                print("you won") # only print if game won
+                break# end loop
+            elif letter_guess in word:
+                indexword = word.index(letter_guess)
+                current_word[indexword] = letter_guess
+                print('yes!')
+                print(current_word)
+                correct += 1
+            else:
+                print('wrong You have', str(limit - count), 'tries left!')
+                count += 1
+        print("game over")
+        print("the word was",word)
+    else:
+        print("okay, maybe nextime")
+
+def jokes():
+    answer = input("Do you want to hear a joke?:")
+    if valid_respone(answer,yes)== True:
+        print("What do you call a fake noodle?")
+        time.sleep(3)
+        print("AN IMPASTA!!!")
+        print("HAHAHHAHAHAHHAHAHHAHAHAHAHAHAH")
+        time.sleep(1)
+        b= input("do you want to hear another joke?:")
+        if valid_respone(b,yes)== True:
+            print('okay get ready')
+            time.sleep(1)
+            print("What did the grape do when he got stepped on?")
+            time.sleep(3)
+            print("HE LET OUT A LITTLE WINE.")
+            time.sleep(2)
+            print("wasn't that so funny.")
+            time.sleep(1)
+            jk = input("another one?:")
+            if valid_respone(jk,yes)== True:
+                print("get ready")
+                time.sleep(1)
+                print("Why did the coffee go to the police?")
+                time.sleep(3)
+                print("HE GOT MUGGED!")
+                time.sleep(1)
+                print("hahahahahahah")
+                time.sleep(3)
+                print("okay I think that's enough for today")
+            else:
+                print("Okay.I understand, one more and you might pee your pants")
+
+        else:
+            print("Okay I guess one is enough.")
+    else:
+        print("Okay then")
+# def music():
+#     answer= input ("do you like to listen to music")
+#     if valid_respone(answer, yes)==True:
+#         time.sleep(2)
+#     a= input ("who is your favriot artist?")
+#     if a == ("travis scoot):
+#          print(a+"is my favriot artis too")
+#     else:
+#          print("iv never hear of"+ answer)
+#     time.sleep(2)
+#     f= input("do you want a song recomendation?")
+#     if vaild_respone(f,yes)==True:
+#         print("I recommend the song play by derek king")
+#     else:
+#         print("okay")
+
+def bye():
+    print("sorry but my mom say its time for dinner. So I have to go.")
+    time.sleep(1)
+    print("I'll see you tomorrow!")
+    time.sleep(1)
+    print("bye")
+
+
+def main():
+    while True:
+        introduction()
+        questions()
+        time.sleep(1)
+        game()
+        time.sleep(1)
+        jokes()
+        time.sleep(1)
+        bye()
+        break
+
+
+
+# DON'T TOUCH! Setup code that runs your main() function.
+if __name__ == "__main__":
+  main()
